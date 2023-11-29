@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    <h1><a href="file:///D:/Program%20Files%20(x86)/gcloud_project/CodePage.html">코딩 테스트</a></h1>
+    <h1><a href="">코딩 테스트</a></h1>
     <select id="select" name="select">
         <option value="45">Assembly (NASM 2.14.02)</option>
         <option value="46">Bash (5.0.0)</option>
@@ -25,10 +25,31 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var Code_Area = document.getElementById('code_area');
-            var Select_Value = document.getElementById('select').value;
+            var Select_Value = document.getElementById('select');
+
+            Select_Value.addEventListener('change', function () {
+                // 선택된 언어의 value 가져오기
+                var selectedLanguage = Select_Value.value;
+
+                // 해당 언어에 대한 코드 가져오기
+                var codeSnippet = getLanguageCode(selectedLanguage);
+
+                // 코드를 textarea에 삽입
+                Code_Area.value = codeSnippet;
+            });
+
+            function getLanguageCode(languageId) {
+                switch (languageId) {
+                    case '50':
+                        return "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello World\\n\");\n    return 0;\n}";
+
+                    default:
+                        return ""; 
+                }
+            }
 
             Code_Area.addEventListener('keydown', function (event) {
-                
+
                 if (event.key === 'Tab') {
                     event.preventDefault();
                     insertText('\t');
@@ -72,7 +93,7 @@
                 var Code_Area = document.getElementById('code_area').value;
                 var Select_Value = document.getElementById('select').value;
 
-                const response = await fetch("http://34.22.92.199:80/submissions/?base64_encode=true&wait=true", {
+                const response = await fetch("http://34.22.92.199:2358/submissions/?base64_encode=true&wait=true", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
@@ -113,7 +134,7 @@
     <form name="input" method="post">
         <h3>소스코드</h3>
         <textarea id="code_area" cols="100" rows="10" style="resize:none"></textarea><br>
-        
+
         <input type="button" value="실행" onclick="submitCode()" /><br><br><br>
     </form>
     <form name="output">
