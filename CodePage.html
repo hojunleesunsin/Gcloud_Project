@@ -42,6 +42,10 @@
                 switch (languageId) {
                     case '50':
                         return "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello World\\n\");\n    return 0;\n}";
+                    case '71':
+                        return "print(\"Hello World\")"
+                    case '62':
+                        return "public class Main {\n   public static void main (String[] args) {\n     System.out.println(\"Hello World\");\n   }\n}"
 
                     default:
                         return ""; 
@@ -93,7 +97,7 @@
                 var Code_Area = document.getElementById('code_area').value;
                 var Select_Value = document.getElementById('select').value;
 
-                const response = await fetch("http://34.22.92.199:2358/submissions/?base64_encode=true&wait=true", {
+                const response = await fetch("http://34.64.34.227:2358/submissions/?base64_encode=true&wait=true", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
