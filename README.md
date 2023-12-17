@@ -50,6 +50,8 @@
 ![Alt text](image/image.png)
 ![Alt text](image/image-1.png)
 
+<br>
+
 ### Apache
 GCE 웹 서버는 Apache를 이용해 구현하였습니다.
 
@@ -59,6 +61,7 @@ apt install apache2
 service apache2 start
 ```
 
+<br>
 
 ### docker
 GCE에서 도커를 설치한 후 사용자를 docker 그룹에 추가하여 root 권한 없이 docker 명령을 실행 할 수 있도록 합니다.
@@ -89,6 +92,8 @@ $ sleep 10s
 $ docker-compose up -d
 $ sleep 5s
 ```
+
+<br>
 
 ### javascript
 ```html
